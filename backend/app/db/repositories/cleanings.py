@@ -45,7 +45,7 @@ class CleaningsRepository(BaseRepository):
     """
 
     async def create_cleaning(self, *, new_cleaning: CleaningCreate) -> CleaningInDB:
-        query_values = new_cleaning.dict()
+        query_values = new_cleaning.model_dump()
         cleaning = await self.db.fetch_one(
             query=CREATE_CLEANING_QUERY,
             values=query_values,
